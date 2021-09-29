@@ -1,4 +1,6 @@
 class Api::CommentsController < ApplicationController
+  before_action :set_service
+  
   def index
     render json: @services.comments
   end
@@ -34,5 +36,9 @@ class Api::CommentsController < ApplicationController
   private
     def comment_params
       params.require(:service).permit(:title, :description)
+    end
+
+    def set_service
+      @service = Service.find(params[:service_id])
     end
 end

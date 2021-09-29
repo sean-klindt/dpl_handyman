@@ -1,4 +1,6 @@
 class Api::ServicesController < ApplicationController
+  before_action :set_worker
+  
   def index
     render json: @worker.services
   end
@@ -34,5 +36,9 @@ class Api::ServicesController < ApplicationController
   private
     def service_params
       params.require(:service).permit(:title, :rate)
+    end
+
+    def set_worker
+      @worker = Worker.find(params[:worker_id])
     end
 end
