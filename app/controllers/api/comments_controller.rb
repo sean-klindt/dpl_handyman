@@ -2,16 +2,16 @@ class Api::CommentsController < ApplicationController
   before_action :set_service
   
   def index
-    render json: @services.comments
+    render json: @service.comments
   end
   
   def show
-    @comments = @services.comments.find(params[:id])
+    @comments = @service.comments.find(params[:id])
     render json: @comments
   end
 
   def create
-    @comments = @services.comments.new(comment_params)
+    @comments = @service.comments.new(comment_params)
     if @comments.save
       render json: @comments
     else
@@ -20,7 +20,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def update
-    @comments = @services.comments.find(params[:id])
+    @comments = @service.comments.find(params[:id])
     if @comments.update(comment_params)
       render json: @comments
     else
@@ -29,7 +29,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def destroy
-    @services.comments.find(params[:id]).destroy
+    @service.comments.find(params[:id]).destroy
     render json: { message: 'Comment Deleted'}
   end
 

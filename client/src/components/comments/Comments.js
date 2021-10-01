@@ -15,7 +15,7 @@ const Comments = ({ serviceId }) => {
   }, [])
 
   const addComment = (comment) => {
-    axios.post(`/api/services/${serviceId}/comments`, {comments})
+    axios.post(`/api/services/${serviceId}/comments`, { comment })
     .then(res => { 
       setComments([...comments, res.data])
     })
@@ -25,8 +25,8 @@ const Comments = ({ serviceId }) => {
   const updateComment = (id, comment) => {
     axios.put(`/api/services/${serviceId}/comments/${id}`, { comment })
     .then( res => {
-      const updatedComments = comments.map( c => {
-        if (c.id == id) {
+      let updatedComments = comments.map( c => {
+        if (c.id === id) {
           return res.data
         }
         return c
@@ -46,7 +46,7 @@ const Comments = ({ serviceId }) => {
 
   return (
     <>
-      <CommentForm addWorker={addComment} />
+      <CommentForm addComment={addComment} />
       <CommentList 
         comments={comments} 
         deleteComment={deleteComment}

@@ -46,7 +46,7 @@ const Services = ({ workerId }) => {
 
   return(
     <>
-      <ServiceForm addWorker={addService} />
+      <ServiceForm addService={addService} />
       <ServiceList 
         services={services} 
         deleteService={deleteService}
