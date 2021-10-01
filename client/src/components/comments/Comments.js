@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import CommentList from './CommentList';
+import CommentForm from './CommentForm';
 
 const Comments = ({ serviceId }) => {
   const [comments, setComments] = useState([])
-
 
   useEffect( () => {
     axios.get(`/api/services/${serviceId}/comments`)
@@ -15,7 +15,7 @@ const Comments = ({ serviceId }) => {
   }, [])
 
   const addComment = (comment) => {
-    axios.post(`/api/services/${serviceId}/comments`, {services})
+    axios.post(`/api/services/${serviceId}/comments`, {comments})
     .then(res => { 
       setComments([...comments, res.data])
     })
@@ -23,7 +23,7 @@ const Comments = ({ serviceId }) => {
   }
 
   const updateComment = (id, comment) => {
-    axios.put(`/api/services/${serviceId}/comments/${id}`, { service })
+    axios.put(`/api/services/${serviceId}/comments/${id}`, { comment })
     .then( res => {
       const updatedComments = comments.map( c => {
         if (c.id == id) {
@@ -45,13 +45,15 @@ const Comments = ({ serviceId }) => {
   }
 
   return (
-
     <>
-      
-
+      <CommentForm addWorker={addComment} />
+      <CommentList 
+        comments={comments} 
+        deleteComment={deleteComment}
+        updateComment={updateComment}
+      />
     </>
   )
 }
-
 
 export default Comments;
