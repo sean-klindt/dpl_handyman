@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WorkerForm from './WorkerForm';
 import Services from '../services/Services';
 
-const Worker = ({ id, name, phone, deleteWorker, updateWorker }) => {
+const Worker = ({  id, name, phone, deleteWorker, updateWorker }) => {
   const [editing, setEdit] = useState(false)
 
   return (

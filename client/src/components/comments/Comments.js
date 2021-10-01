@@ -16,22 +16,21 @@ const Comments = ({ serviceId }) => {
 
   const addComment = (comment) => {
     axios.post(`/api/services/${serviceId}/comments`, { comment })
-      .then(res => { 
-        setComments([...comments, res.data])
-      })
-      .catch( err => console.log(err))
+
+    .then(res => { 
+      setComments([...comments, res.data])
+    })
+    .catch( err => console.log(err))
   }
 
   const updateComment = (id, comment) => {
-    axios.put(`/api/service/${serviceId}/comments/${id}`, { comment })
-      .then( res => {
-        let updatedComments = comments.map( c => {
-          if (c.id === id) {
-            return res.data
-          }
-          return c
-        })
-        setComments(updatedComments)
+    axios.put(`/api/services/${serviceId}/comments/${id}`, { comment })
+    .then( res => {
+      let updatedComments = comments.map( c => {
+        if (c.id === id) {
+          return res.data
+        }
+        return c
       })
       .catch( err => console.log(err))
   }

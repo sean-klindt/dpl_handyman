@@ -5,7 +5,8 @@ const CommentForm = ({ addComment, id, title, description, updateComment, setEdi
   
   useEffect( () => {
     if (id) {
-      setComment({ title, description})
+
+      setComment({ title, description })
     }
   }, [])
 
