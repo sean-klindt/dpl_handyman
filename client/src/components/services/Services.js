@@ -35,7 +35,7 @@ const Services = ({ workerId }) => {
       })
       .catch( err => console.log(err))
   }
-  
+
   const deleteService = (id) => {
     axios.delete(`/api/workers/${workerId}/services/${id}`)
       .then( res => {

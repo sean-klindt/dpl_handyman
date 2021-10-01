@@ -8,14 +8,15 @@ const Comments = ({ serviceId }) => {
 
   useEffect( () => {
     axios.get(`/api/services/${serviceId}/comments`)
-    .then( res => {
-      setComments(res.data)
-    })
-    .catch( err => console.log(err))
+      .then( res => {
+        setComments(res.data)
+      })
+      .catch( err => console.log(err))
   }, [])
 
   const addComment = (comment) => {
     axios.post(`/api/services/${serviceId}/comments`, { comment })
+
     .then(res => { 
       setComments([...comments, res.data])
     })
@@ -31,20 +32,18 @@ const Comments = ({ serviceId }) => {
         }
         return c
       })
-      setComments(updatedComments)
-    })
-    .catch( err => console.log(err))
+      .catch( err => console.log(err))
   }
 
   const deleteComment = (id) => {
     axios.delete(`/api/services/${serviceId}/comments/${id}`)
-    .then( res => {
-      setComments( comments.filter( c => c.id !== id))
-    })
-    .catch( err => console.log(err))
+      .then( res => {
+        setComments( comments.filter( c => c.id !== id))
+      })
+      .catch( err => console.log(err))
   }
 
-  return (
+  return(
     <>
       <CommentForm addComment={addComment} />
       <CommentList 

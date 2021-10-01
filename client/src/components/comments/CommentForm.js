@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-const CommentForm = ( {addComment, id, title, description, updateComment, setEdit}) => {
-  const [comment, setComment] = useState({title: "", description: ""})
+const CommentForm = ({ addComment, id, title, description, updateComment, setEdit }) => {
+  const [comment, setComment] = useState({ title: "", description: "" })
   
-
   useEffect( () => {
     if (id) {
+
       setComment({ title, description })
     }
   }, [])

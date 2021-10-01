@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import WorkerForm from './WorkerForm';
 import Services from '../services/Services';
-import Comments from '../comments/Comments';
 
 const Worker = ({  id, name, phone, deleteWorker, updateWorker }) => {
   const [editing, setEdit] = useState(false)
