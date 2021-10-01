@@ -35,7 +35,7 @@ const Services = ({ workerId }) => {
       })
       .catch( err => console.log(err))
   }
-  
+
   const deleteService = (id) => {
     axios.delete(`/api/workers/${workerId}/services/${id}`)
       .then( res => {
@@ -46,7 +46,7 @@ const Services = ({ workerId }) => {
 
   return(
     <>
-      <ServiceForm addWorker={addService} />
+      <ServiceForm addService={addService} />
       <ServiceList 
         services={services} 
         deleteService={deleteService}

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CommentForm from './CommentForm';
 
+
 const Comment = ({ id, title, description, deleteComment, updateComment}) => {
   const [editing, setEdit] = useState(false)
 
@@ -13,13 +14,13 @@ const Comment = ({ id, title, description, deleteComment, updateComment}) => {
         {
           editing ?
           <>
-          <CommentForm
-          id={id}
-          title={title}
-          description={description}
-          updateComment={updateComment}
-          setEdit={setEdit}
-          />
+            <CommentForm
+            id={id}
+            title={title}
+            description={description}
+            updateComment={updateComment}
+            setEdit={setEdit}
+            />
           </>
           :
           <button onClick={() => setEdit(true)}>Edit</button>
