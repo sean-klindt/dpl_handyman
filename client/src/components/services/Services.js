@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import axios from 'axios';
+import ServiceList from './ServiceList';
+import ServiceForm from './ServiceForm';
 
 const Services = ({ workerId }) => {
   const [services, setServices] = useState([])
@@ -33,7 +35,6 @@ const Services = ({ workerId }) => {
       })
       .catch( err => console.log(err))
   }
-
   const deleteService = (id) => {
     axios.delete(`/api/workers/${workerId}/services/${id}`)
       .then( res => {
@@ -42,9 +43,14 @@ const Services = ({ workerId }) => {
       .catch( err => console.log(err))
   }
 
-  return (
+  return(
     <>
-
+      <ServiceForm addWorker={addService} />
+      <ServiceList 
+        services={services} 
+        deleteService={deleteService}
+        updateService={updateService}
+      />
     </>
   )
 }

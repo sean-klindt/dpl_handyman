@@ -22,6 +22,7 @@ const WorkerForm = ({ addWorker, id, name, phone, updateWorker, setEdit }) => {
 
   return (
     <>
+      <h4>Add New Worker</h4>
       <form onSubmit={handleSubmit}>
         <input 
           name="name"
