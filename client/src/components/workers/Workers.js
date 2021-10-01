@@ -59,12 +59,12 @@ const Workers = () => {
 
   return(
     <>
-      <WorkerForm addWorker={addWorker} />
       <WorkerList 
         workers={workers} 
         deleteWorker={deleteWorker}
         updateWorker={updateWorker}
       />
+      <WorkerForm addWorker={addWorker} />
     </>
   )
 }
